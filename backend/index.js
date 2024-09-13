@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const OpenAI = require('openai');
@@ -7,10 +8,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// OpenAI API setup
 const openai = new OpenAI({
-  apiKey: 'sk-73VeN5f9gygTWJKstiJy42pmsjQhy9CaZdy4PDFvCfT3BlbkFJEyOlJwvtfvbaf6T5mFcoNf7lEoRNQnYQ_O63ZboLoA', // Replace with your actual API key
+  apiKey: process.env.OPENAI_API_KEY,
 });
+
 
 // Route to handle chat requests
 app.post('/api/chat', async (req, res) => {
